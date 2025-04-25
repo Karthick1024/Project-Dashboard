@@ -1,11 +1,9 @@
-// src/context/TaskContext.jsx
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
-  // 1) Load initial tasks from localStorage (lazy initializer)
+  
   const [tasks, setTasks] = useState(() => {
     try {
       const saved = localStorage.getItem('tasks');
@@ -15,16 +13,16 @@ export const TaskProvider = ({ children }) => {
     }
   });
 
-  // 2) Persist tasks to localStorage whenever they change
   useEffect(() => {
     try {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     } catch {
-      // handle write errors if needed
+      console.log(error);
+      
     }
   }, [tasks]);
 
-  // 3) CRUD operations
+  
   const addTask = (task) => {
     setTasks((prev) => [
       ...prev,

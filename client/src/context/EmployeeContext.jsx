@@ -1,11 +1,9 @@
-// src/context/EmployeeContext.jsx
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const EmployeeContext = createContext();
 
 export const EmployeeProvider = ({ children }) => {
-  // Initialize from localStorage
+  // storing data in localstorage to available the data even if the page refreshes
   const [employees, setEmployees] = useState(() => {
     try {
       const saved = localStorage.getItem('employees');
@@ -16,7 +14,7 @@ export const EmployeeProvider = ({ children }) => {
     }
   });
 
-  // Persist to localStorage on employees change
+
   useEffect(() => {
     try {
       localStorage.setItem('employees', JSON.stringify(employees));
@@ -25,7 +23,7 @@ export const EmployeeProvider = ({ children }) => {
     }
   }, [employees]);
 
-  // Add a new employee
+
   const addEmployee = (employee) => {
     setEmployees((prev) => [
       ...prev,
@@ -33,12 +31,12 @@ export const EmployeeProvider = ({ children }) => {
     ]);
   };
 
-  // Delete an employee by id
+
   const deleteEmployee = (id) => {
     setEmployees((prev) => prev.filter((emp) => emp.id !== id));
   };
 
-  // Update an employee's details
+
   const updateEmployee = (updatedEmployee) => {
     setEmployees((prev) =>
       prev.map((emp) =>

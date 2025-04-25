@@ -41,17 +41,16 @@ const Projects = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      assignedEmployees: []  // Ensure assignedEmployees is always an array
+      assignedEmployees: []
     }
   });
 
   useEffect(() => {
     if (isEdit && editId !== null) {
-      // When editing, ensure the selected employees are reset
       const project = projects.find(p => p.id === editId);
       const assignedEmployeeIds = project?.assignedEmployees.map(e => e.id) || [];
       setSelectedEmployees(assignedEmployeeIds);
-      setValue('assignedEmployees', assignedEmployeeIds); // Sync the form with selectedEmployees
+      setValue('assignedEmployees', assignedEmployeeIds);
     }
   }, [isEdit, editId, projects, setValue]);
 
@@ -80,7 +79,7 @@ const Projects = () => {
     reset();
     setIsEdit(false);
     setEditId(null);
-    setSelectedEmployees([]);  // Reset selected employees after submit
+    setSelectedEmployees([]);
   };
 
   const handleEdit = (p) => {
@@ -88,18 +87,18 @@ const Projects = () => {
     setValue('description', p.description);
     setValue('startDate', p.startDate);
     setValue('endDate', p.endDate);
-    setValue('assignedEmployees', p.assignedEmployees.map(e => e.id)); // Map to employee IDs for editing
+    setValue('assignedEmployees', p.assignedEmployees.map(e => e.id));
     setIsEdit(true);
     setEditId(p.id);
   };
 
   const handleEmployeeChange = (employeeId) => {
     const newSelected = selectedEmployees.includes(employeeId)
-      ? selectedEmployees.filter(id => id !== employeeId)  // Remove employee if already selected
-      : [...selectedEmployees, employeeId];  // Add employee if not selected
+      ? selectedEmployees.filter(id => id !== employeeId)
+      : [...selectedEmployees, employeeId];
 
     setSelectedEmployees(newSelected);
-    setValue('assignedEmployees', newSelected); // Update react-hook-form with selected employees
+    setValue('assignedEmployees', newSelected);
   };
 
   return (
@@ -146,8 +145,8 @@ const Projects = () => {
                     type="checkbox"
                     id={`emp-${e.id}`}
                     value={e.id}
-                    checked={selectedEmployees.includes(e.id)}  // Check if the employee is selected
-                    onChange={() => handleEmployeeChange(e.id)}  // Handle the change on checkbox
+                    checked={selectedEmployees.includes(e.id)}
+                    onChange={() => handleEmployeeChange(e.id)}
                     className="form-check-input"
                   />
                   <label htmlFor={`emp-${e.id}`} className="form-check-label">

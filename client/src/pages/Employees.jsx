@@ -36,6 +36,15 @@ const Employees = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
+    const emailExists = employees.some((emp) => 
+      emp.email === data.email && emp.id !== editId
+    );
+
+    if (emailExists) {
+      alert('Email ID already exists. Please use a different email.');
+      return;
+    }
+
     const file = data.imageFile[0];
     const preview = URL.createObjectURL(file);
     const emp = {
@@ -63,7 +72,6 @@ const Employees = () => {
     setValue('name', employee.name);
     setValue('position', employee.position);
     setValue('email', employee.email);
-    // file input cannot be prefilled
     setIsEdit(true);
     setEditId(employee.id);
     setShowForm(true);

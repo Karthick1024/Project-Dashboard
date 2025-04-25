@@ -21,10 +21,7 @@ const Dashboard = () => {
       Object.entries(statusMap).map(([key, name]) => [key, { name, items: [] }])
     )
   );
-  useEffect(() => {
-    console.log('all tasks:', tasks);
-    // ... rest of your column-rebuild logic
-  }, [tasks, filterProject]);
+  
   
   useEffect(() => {
     const filtered = filterProject
@@ -55,7 +52,7 @@ const Dashboard = () => {
     const sourceItems = Array.from(sourceCol.items);
     const [moved] = sourceItems.splice(source.index, 1);
 
-    // update task status
+    
     const updated = { ...moved, status: destination.droppableId };
     updateTask(updated);
 

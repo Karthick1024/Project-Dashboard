@@ -94,8 +94,8 @@ const Tasks = () => {
 
   return (
     <div className="container mt-4" data-aos="flip-left"
-    data-aos-easing="ease-out-cubic"
-    data-aos-duration="2000">
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="2000">
       <h3>Task Management</h3>
 
       <button
@@ -112,7 +112,6 @@ const Tasks = () => {
       {showForm && (
         <form className="card p-3 mb-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
-            {/* Project Select */}
             <div className="col-md-6 mb-3">
               <label>Project</label>
               <select className="form-select" {...register('projectId')}>
@@ -126,21 +125,21 @@ const Tasks = () => {
               <p className="text-danger">{errors.projectId?.message}</p>
             </div>
 
-            {/* Task Title */}
+
             <div className="col-md-6 mb-3">
               <label>Task Title</label>
               <input className="form-control" {...register('title')} />
               <p className="text-danger">{errors.title?.message}</p>
             </div>
 
-            {/* Description */}
+
             <div className="col-12 mb-3">
               <label>Description</label>
               <textarea className="form-control" {...register('description')} />
               <p className="text-danger">{errors.description?.message}</p>
             </div>
 
-            {/* Employee Multi-select (Checkboxes) */}
+
             <div className="col-md-6 mb-3">
               <label>Assign Employees</label>
               <Controller
@@ -185,14 +184,14 @@ const Tasks = () => {
               <p className="text-danger">{errors.employeeIds?.message}</p>
             </div>
 
-            {/* ETA */}
+
             <div className="col-md-3 mb-3">
               <label>ETA</label>
               <input type="date" className="form-control" {...register('eta')} />
               <p className="text-danger">{errors.eta?.message}</p>
             </div>
 
-            {/* Reference Image File */}
+
             <div className="col-md-3 mb-3">
               <label>Reference Image (file)</label>
               <input type="file" className="form-control" {...register('imageFile')} />
@@ -206,7 +205,7 @@ const Tasks = () => {
         </form>
       )}
 
-      {/* Task Cards */}
+
       <div className="row">
         {tasks.map((t) => (
           <div className="col-md-4 mb-3" key={t.id}>

@@ -13,10 +13,8 @@ import Layout from '../layouts/Layout';
 const AppRouter = () => {
   return (
     <Routes>
-      {/* Redirect root to /dashboard */}
-      <Route path="/" element={<Navigate to="/dashboard" />} />
 
-      {/* Nested Dashboard Layout */}
+      <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="/dashboard" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="employees" element={<Employees />} />

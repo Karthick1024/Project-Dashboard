@@ -8,7 +8,7 @@ const Layout = () => {
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/dashboard">Dashboard</NavLink>
 
-          {/* 1. Toggler Button */}
+        
           <button
             className="navbar-toggler"
             type="button"
@@ -21,7 +21,6 @@ const Layout = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* 2. Collapsible Nav Links */}
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -44,7 +43,7 @@ const Layout = () => {
         </div>
       </nav>
 
-      {/* Content Outlet */}
+      
       <div className="container">
         <Outlet />
       </div>
