@@ -6,7 +6,8 @@ import Dashboard from '../pages/Dashboard';
 import Employees from '../pages/Employees';
 import Projects from '../pages/Projects';
 import Tasks from '../pages/Tasks';
-import DashboardLayout from '../layouts/temp';
+import Dashboardlayout from '../layouts/DashBoardLayout';
+
 
 const AppRouter = () => {
   return (
@@ -15,7 +16,7 @@ const AppRouter = () => {
       <Route path="/" element={<Navigate to="/dashboard" />} />
 
       {/* Nested Dashboard Layout */}
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route path="/dashboard" element={<Dashboardlayout />}>
         <Route index element={<Dashboard />} />
         <Route path="employees" element={<Employees />} />
         <Route path="projects" element={<Projects />} />
