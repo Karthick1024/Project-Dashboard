@@ -6,7 +6,7 @@ import Dashboard from '../pages/Dashboard';
 import Employees from '../pages/Employees';
 import Projects from '../pages/Projects';
 import Tasks from '../pages/Tasks';
-import DashboardLayout from '../layouts/DashBoardLayout';
+import DashboardLayout from '../layouts/temp';
 
 const AppRouter = () => {
   return (
