@@ -35,9 +35,17 @@ const Employees = () => {
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
-    const emailExists = employees.some((emp) => 
-      emp.email === data.email && emp.id !== editId
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
+
+  const onSubmit = async (data) => {
+    const emailExists = employees.some(
+      (emp) => emp.email === data.email && emp.id !== editId
     );
 
     if (emailExists) {
@@ -46,14 +54,14 @@ const Employees = () => {
     }
 
     const file = data.imageFile[0];
-    const preview = URL.createObjectURL(file);
+    const base64Image = await toBase64(file);
+
     const emp = {
       id: isEdit ? editId : Date.now().toString(),
       name: data.name,
       position: data.position,
       email: data.email,
-      imageFile: file,
-      imageUrl: preview
+      imageUrl: base64Image 
     };
 
     if (isEdit) {

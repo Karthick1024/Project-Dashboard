@@ -17,7 +17,7 @@ export const TaskProvider = ({ children }) => {
     try {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     } catch {
-      console.log(error);
+      //
       
     }
   }, [tasks]);

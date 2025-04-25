@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { useEmployee } from '../context/EmployeeContext';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -37,7 +37,7 @@ const Projects = () => {
   const [selectedEmployees, setSelectedEmployees] = useState([]);
 
   const {
-    register, handleSubmit, reset, setValue, control, formState: { errors }
+    register, handleSubmit, reset, setValue, formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -55,31 +55,33 @@ const Projects = () => {
   }, [isEdit, editId, projects, setValue]);
 
   const onSubmit = (data) => {
-    const assignedEmployeeIds = selectedEmployees;
-
     const file = data.logoFile[0];
-    const preview = URL.createObjectURL(file);
+    const reader = new FileReader();
 
-    const assigned = employees.filter(e => assignedEmployeeIds.includes(e.id));
+    reader.onloadend = () => {
+      const assigned = employees.filter(e => selectedEmployees.includes(e.id));
 
-    const project = {
-      id: isEdit ? editId : Date.now().toString(),
-      title: data.title,
-      description: data.description,
-      logoFile: file,
-      logoUrl: preview,
-      startDate: data.startDate,
-      endDate: data.endDate,
-      assignedEmployees: assigned
+      const project = {
+        id: isEdit ? editId : Date.now().toString(),
+        title: data.title,
+        description: data.description,
+        logoFile: file,
+        logoUrl: reader.result,
+        startDate: data.startDate,
+        endDate: data.endDate,
+        assignedEmployees: assigned
+      };
+
+      if (isEdit) updateProject(project);
+      else addProject(project);
+
+      reset();
+      setIsEdit(false);
+      setEditId(null);
+      setSelectedEmployees([]);
     };
 
-    if (isEdit) updateProject(project);
-    else addProject(project);
-
-    reset();
-    setIsEdit(false);
-    setEditId(null);
-    setSelectedEmployees([]);
+    reader.readAsDataURL(file);
   };
 
   const handleEdit = (p) => {
