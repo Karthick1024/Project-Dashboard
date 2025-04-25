@@ -1,12 +1,74 @@
-# React + Vite
+# Project Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and interactive project management dashboard built using **React**, **Vite**, **Context API**, and **Bootstrap**. It features Kanban-style task organization, employee and project management with CRUD capabilities, and intuitive drag-and-drop support.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📋 **Project, Task, and Employee Management**
+- 🧩 **Kanban Board** with drag-and-drop functionality
+- 👥 Assign multiple or single employees to tasks/projects
+- 🧠 State management using React Context API
+- ⚡ Fast builds and HMR via Vite
+- 📱 Fully responsive design using Bootstrap
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Projectdashboard/ └── client/ ├── public/ ├── src/ │ ├── assets/ │ ├── components/ │ ├── context/ │ ├── layouts/ │ ├── pages/ │ ├── routes/ │ ├── utils/ │ ├── App.jsx │ └── main.jsx ├── index.html ├── package.json ├── vite.config.js
+
+shell
+Copy
+Edit
+
+## 🚀 Getting Started
+
+
+
+### Installation
+
+```bash
+cd Dashboard/client
+npm install
+Running the App
+bash
+Copy
+Edit
+npm run dev
+This will start the development server on http://localhost:5173 (or similar).
+
+🔧 Available Scripts
+npm run dev - Start the dev server
+
+npm run build - Build the app for production
+
+npm run preview - Preview the production build
+
+📦 Dependencies
+Key libraries used:
+
+react
+
+react-dom
+
+react-router-dom
+
+bootstrap
+
+classnames
+
+react-beautiful-dnd
+
+🧠 State Management
+This project uses React Context API to manage:
+
+Employee state
+
+Project state
+
+Task state
+
+Located in src/context/.
+
+
+Also the delpoyed link in vercel
+
+https://project-dashboard-puce.vercel.app/dashboard
