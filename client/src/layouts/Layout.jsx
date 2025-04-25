@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 
-const Dashboardlayout = () => {
+const Layout = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
@@ -52,4 +52,4 @@ const Dashboardlayout = () => {
   );
 };
 
-export default Dashboardlayout;
+export default Layout;
