@@ -187,7 +187,8 @@ const Tasks = () => {
 
             <div className="col-md-3 mb-3">
               <label>ETA</label>
-              <input type="date" className="form-control" {...register('eta')} />
+              <input type="date" className="form-control" {...register('eta')} min={selectedProject?.startDate} 
+                max={selectedProject?.endDate} />
               <p className="text-danger">{errors.eta?.message}</p>
             </div>
 
